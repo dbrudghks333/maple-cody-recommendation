@@ -26,13 +26,13 @@ export default function Main() {
   const [partStateToRecommand, setPartStateToRecommand] = useState(0);
   const recommandedInfo = useRecommandFetch(recommandInfo.cryptoUriToRecommand, recommandInfo.partStateToRecommand);
 
-  const snackBar1HandleClose = (event, reason)=>{
+  const snackBar1HandleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
     setSnackBar1Open(false)
   }
-  const snackBar2HandleClose = (event, reason)=>{
+  const snackBar2HandleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -52,6 +52,9 @@ export default function Main() {
       cryptoUriToRecommand: characterInfo.crypto_uri,
       partStateToRecommand,
     });
+    console.log('characterInfo.crypto', characterInfo.crypto_uri)
+    console.log('partStateToRecommand', partStateToRecommand)
+
   }
   console.log(recommandedInfo)
   return (
@@ -63,7 +66,7 @@ export default function Main() {
       </Snackbar>
       <Snackbar open={snackBar2Open} autoHideDuration={6000} onClose={snackBar2HandleClose}>
         <Alert onClose={snackBar2HandleClose} severity="info" sx={{ width: '100%' }}>
-          아무 장비도 선택하지 않았습니다. <br/>
+          아무 장비도 선택하지 않았습니다. <br />
           변환하고 싶은 장비 아이템을 클릭해서 추천 여부를 토글링 할 수 있습니다.
         </Alert>
       </Snackbar>
@@ -78,7 +81,7 @@ export default function Main() {
             setPartStateToRecommand={setPartStateToRecommand}
           />
           <br />
-          <FormID setCharacterInfo={setCharacterInfo} setRecommandInfo={setRecommandInfo}/>
+          <FormID setCharacterInfo={setCharacterInfo} setRecommandInfo={setRecommandInfo} />
         </Grid>
         <Grid item xs={1} style={{
           "display": "flex",
@@ -92,11 +95,11 @@ export default function Main() {
 
         <Grid item xs={5.5}>
           <InferResultBox
-            recommandedInfo = {recommandedInfo}
+            recommandedInfo={recommandedInfo}
           />
         </Grid>
       </Grid>
-      <div style={{height: "10vh"}}>
+      <div style={{ height: "10vh" }}>
 
       </div>
     </Fragment>

@@ -37,6 +37,7 @@ class KserveComplementModel(kserve.Model):
         self.model = ComplementModel(self.num_classes).to(self.device)
 
     def load(self) -> bool:
+        print(f"{self.gender}_{self.part}_model.pt")
         self.model.load_state_dict(
             torch.load(os.path.join(
                 self.model_dir,

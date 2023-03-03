@@ -16,7 +16,7 @@ def main():
     model_list = [
         KserveComplementModel(
             name=f"complement-model-{gender}-{part}",
-            model_dir="/mnt/models",
+            model_dir="/home/yu/ttt/maple-cody-recommendation-system/mnt/models",
             gender=gender,
             part=part,
         ) for gender, part in model_list_to_make

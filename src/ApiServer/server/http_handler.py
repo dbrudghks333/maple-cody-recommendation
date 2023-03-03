@@ -196,6 +196,7 @@ class HttpHandler:
 
     async def recommend_handler(self, request: web.Request):
         post = await request.json()
+        print("post : ",post)
         encrypted_character_uri = post["crypto_uri"]
         parts_to_change = post["parts"]
 

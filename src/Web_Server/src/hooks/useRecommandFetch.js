@@ -10,12 +10,12 @@ const TRANSFORM_STATE_TO_PARTS = [
   "weapon",
   "longcoat",
   "glove",
-  "cape", 
+  "cape",
   "shoes",
 ]
 
 function useRecommandFetch(cryptoUri, partState) {
-  const url = 'http://vqateam12.kro.kr:8383/v1/recommend-cody'
+  const url = 'http://api-server:8383/v1/recommend-cody'
   const [data, setData] = useState(null);
   useEffect(() => {
     if (cryptoUri === null)
@@ -28,7 +28,7 @@ function useRecommandFetch(cryptoUri, partState) {
         parts.push(TRANSFORM_STATE_TO_PARTS[idx])
       }
     }
-    
+
     fetch(url, {
       method: "POST",
       body: JSON.stringify({

@@ -93,6 +93,7 @@ class HTTPHandler:
                     continue
                 setattr(avatar, item_type, "0")
                 try:
+                    print('avatar',avatar)
                     result[f"{item_type}_image"] = await self.processor.process_image(avatar, False)
                 except aiohttp.ClientConnectionError as err:
                     raise web.HTTPGatewayTimeout(
@@ -114,10 +115,15 @@ class HTTPHandler:
 
     async def icon_handler(self, request: web.Request):
         post = await request.json()
+        print('icon handler start')
         icon_code = post.get("icon")
+        print('icon_handler icon_code : ',icon_code)
         try:
+            print("icon handler jinip")
+            b = await self.processor.get_icon(icon_code)
+            print("icon_handler b : ",b)
             return web.Response(
-                text=await self.processor.get_icon(icon_code),
+                text=b,
                 status=HTTPStatus.OK,
             )
         except Exception as err:
@@ -140,10 +146,15 @@ class HTTPHandler:
 
     async def hair_image_handler(self, request: web.Request):
         post = await request.json()
+        print("hair_image_handler post")
         hair_code = post.get("hair")
+        print("hair_code : ",hair_code)
         try:
+            print('successs jinip')
+            a =await self.processor.get_hair(hair_code)
+            print('result hair_image a : ',a)
             return web.Response(
-                text=await self.processor.get_hair(hair_code),
+                text=a,
                 status=HTTPStatus.OK,
             )
         except Exception as err:
