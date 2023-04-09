@@ -41,7 +41,7 @@ class KserveComplementModel(kserve.Model):
         self.model.load_state_dict(
             torch.load(os.path.join(
                 self.model_dir,
-                f"{self.gender}_{self.part}_model.pt"
+                f"complement_model_{self.gender}_{self.part}_EPOCH_2.pt"
             ), map_location=self.device)
         )
         self.model.eval()

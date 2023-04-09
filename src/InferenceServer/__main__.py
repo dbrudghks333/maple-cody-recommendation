@@ -2,7 +2,7 @@ import kserve
 import argparse
 import json
 from .Model.complement_model import KserveComplementModel
-
+import os
 
 def main():
     parser = argparse.ArgumentParser(description="inference server")
@@ -12,11 +12,10 @@ def main():
     args = parser.parse_args()
 
     model_list_to_make = json.loads(args.model_json)
-    print(model_list_to_make)
     model_list = [
         KserveComplementModel(
             name=f"complement-model-{gender}-{part}",
-            model_dir="/home/yu/ttt/maple-cody-recommendation-system/mnt/models",
+            model_dir="mnt/models",
             gender=gender,
             part=part,
         ) for gender, part in model_list_to_make

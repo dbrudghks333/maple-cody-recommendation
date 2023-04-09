@@ -4,6 +4,7 @@ import os
 from dataclasses import dataclass
 from typing import List
 
+import time
 import pandas as pd
 from bs4.element import Tag
 
@@ -81,7 +82,6 @@ def save_user_info_list(user_info_list: List[UserInfo]) -> None:
     fields = ["Ranking", "Name"]
     first_ranking = user_info_list[0].ranking
     last_ranking = user_info_list[-1].ranking
-    print(FORMAT_NAME_LIST.format(first_ranking, last_ranking))
     directory = os.path.dirname(FORMAT_NAME_LIST.format(first_ranking, last_ranking))
     if not os.path.exists(directory):
         os.makedirs(directory)

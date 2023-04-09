@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: creator
+spec:
+  schedule: "*/30 * * * *"
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure 
+          containers:
+            - name: creator
+              image: 540566440182.dkr.ecr.ap-northeast-2.amazonaws.com/make-train-data:latest
+              imagePullPolicy: Always
+              volumeMounts:
+                - name: persistent-storage
+                  mountPath: /mnt/data
+          volumes:
+            - name: persistent-storage
+              persistentVolumeClaim:
+                claimName: efs-claim

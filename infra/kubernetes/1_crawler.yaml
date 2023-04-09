@@ -1,0 +1,25 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: crawler
+spec:
+  schedule: "*/1 * * * *" 
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 3
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure 
+          containers:
+            - name: crawler
+              image: 540566440182.dkr.ecr.ap-northeast-2.amazonaws.com/crawler:latest
+              imagePullPolicy: Always
+              volumeMounts:
+                - name: persistent-storage
+                  mountPath: /mnt/data
+          volumes:
+            - name: persistent-storage
+              persistentVolumeClaim:
+                claimName: efs-claim

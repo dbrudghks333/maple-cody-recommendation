@@ -2,10 +2,8 @@ version: '3.4'
 
 services:
   api-server:
-    image: "xxxx/api-server:v1.0.0"
-    container_name: api-server
-    hostname: api-server
-    command: --wcr-server-host wzcomparerr2server --wcr-server-port 7209 --wcr-server-protocol http --base-wz-code-path ./data/base_wz.json --wcr-caller-retry-num 3 --wcr-caller-timeout 1 --wcr-caller-backoff 1 --avatar-server-host avatar-server --avatar-server-protocol http --avatar-server-port 8080 --avatar-caller-retry-num 1 --avatar-caller-timeout 2.5 --avatar-caller-backoff 1 --inference-server-host localhost --inference-server-protocol localhost --inference-server-port 9000 --inference-caller-retry-num 5 --inference-caller-timeout 2.5 --inference-caller-backoff 1
-
+    image: "xxxx/inference-server:v1.0.0"
+    container_name: inference-server
+    hostname: inference-server
     ports:
-      - "8383:8383"
+      - "9000:9000"

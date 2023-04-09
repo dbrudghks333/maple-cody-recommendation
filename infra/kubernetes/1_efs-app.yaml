@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: efs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: efs-app
+  template:
+    metadata:
+      labels:
+        app: efs-app
+    spec:
+      containers:
+        - name: efs-container
+          image: ubuntu:latest
+          command: ["/bin/bash", "-c", "--"]
+          args: ["while true; do sleep 30; done;"]
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: persistent-storage
+              mountPath: /mnt/data
+      volumes:
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: efs-claim

@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import json
 import os
 import asyncio
+from aiohttp_prometheus_exporter.handler import metrics
 
 
 def get_html_text(url: str):
@@ -136,7 +137,8 @@ class HttpHandler:
             web.post('/character_code_web_handler', self.character_code_web_handler),
             web.post('/infer_code_web_handler', self.infer_code_web_handler),
             web.post('/v1/recommend-cody', self.recommend_handler),
-            web.post('/v1/character-info', self.character_info_handler)
+            web.post('/v1/character-info', self.character_info_handler),
+            web.get('/metrics',metrics())
         ]
 
     async def index_handler(self, request: web.Request):

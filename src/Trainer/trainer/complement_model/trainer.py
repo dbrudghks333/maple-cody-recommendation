@@ -16,15 +16,15 @@ import time
 
 @dataclass
 class TrainerArguments:
-    data_path: str = './data/json_data_result60.json'
+    data_path: str = './mnt/data/json_data_result.json'
     batch_size: int = 32
     num_workers: int = 8
-    tensorboard_path: str = f"./runs/{time.strftime('%Y.%m.%d - %H:%M:%S')}"
-    model_save_path: str = './runs/models'
+    tensorboard_path: str = f"./mnt/{time.strftime('%Y.%m.%d - %H:%M:%S')}"
+    model_save_path: str = './mnt/models'
     gender: str = "female"
     parts: str = "face"
     saved_model_path: Optional[str] = None
-    num_epochs: int = 15
+    num_epochs: int = 3
     learning_rate: float = 0.001
     step_size: float = 20
     gamma: float = 0.1

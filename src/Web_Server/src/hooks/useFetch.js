@@ -7,6 +7,7 @@ function useFetch(url, userid) {
       return
     fetch(url, {
       method: "POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ "user_name": userid })
     })
       .then(res => {

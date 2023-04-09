@@ -7,7 +7,7 @@ import gc
 cwd = os.getcwd()
 file_path = os.path.abspath(os.path.join(cwd, os.pardir))
 file_path = os.path.abspath(os.path.join(file_path, os.pardir))
-file_path = os.path.join(file_path, 'data')
+file_path = os.path.join(file_path, 'mnt/data')
 
 path1 = os.path.join(file_path, 'new_json_data_3001_10000.json')
 
@@ -26,8 +26,8 @@ for json_data in json_datas:
         result[data["nickname"]] = []
         print('!!!!')
         if cnt >= run_from:
-            print(data["nickname"])
             for code_list in data["recent_cody_list"]:
+                print(data)
                 while True:
                     encrypted_code = code_list.replace(
                         'https://avatar.maplestory.nexon.com/Character/', ''
@@ -46,7 +46,7 @@ for json_data in json_datas:
                         print(response.status_code, response.text)
 
         if len(result) == 100:
-            save_path = os.path.join(file_path, f'json_data_result{cnt}.json')
+            save_path = os.path.join(file_path, f'json_data_result.json')
 
             if cnt >= run_from:
                 with open(save_path, "w") as f:
@@ -58,7 +58,7 @@ for json_data in json_datas:
             result = {}
 
 if len(result) > 0:
-    save_path = os.path.join(file_path, f'json_data_result{cnt}.json')
+    save_path = os.path.join(file_path, f'json_data_result.json')
 
     cnt += 1
 

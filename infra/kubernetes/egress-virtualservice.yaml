@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: maple-egress-gateway
+spec:
+  hosts:
+  - maple.gg
+  gateways:
+  - maple-egressgateway
+  - mesh
+  http:
+  - match:
+    - gateways:
+      - mesh
+      port: 80
+    route:
+    - destination:
+        host: istio-egressgateway.istio-system.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
+  - match:
+    - gateways:
+      - maple-egressgateway
+      port: 80
+    route:
+    - destination:
+        host: maple.gg
+        port:
+          number: 80
+      weight: 100

@@ -1,1 +1,1 @@
-BASE_URI_PATH = "script/crawling/.data"
+BASE_URI_PATH = "./mnt/data"

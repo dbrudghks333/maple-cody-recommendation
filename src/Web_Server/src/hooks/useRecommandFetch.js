@@ -15,7 +15,7 @@ const TRANSFORM_STATE_TO_PARTS = [
 ]
 
 function useRecommandFetch(cryptoUri, partState) {
-  const url = 'http://api-server:8383/v1/recommend-cody'
+  const url = 'http://localhost:8383/v1/recommend-cody'
   const [data, setData] = useState(null);
   useEffect(() => {
     if (cryptoUri === null)
