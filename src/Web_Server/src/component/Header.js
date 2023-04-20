@@ -24,7 +24,7 @@ export default function Header() {
             variant="h5"
             fontFamily="inter-extra-bold"
           >
-            Korea University COSE489 Final Project - Team 4
+            Final Project - Team 4
           </Typography>
         </Grid>
         <Grid xs={1} />

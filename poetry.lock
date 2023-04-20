@@ -65,6 +65,18 @@ async-timeout = ">=4.0.2,<5.0.0"
 yarl = ">=1.5.1,<2.0.0"
 
 [[package]]
+name = "aiohttp-prometheus-exporter"
+version = "0.2.4"
+description = "Prometheus exporter for aiohttp server and client."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+aiohttp = ">=3"
+prometheus-client = ">=0.6"
+
+[[package]]
 name = "aioredis"
 version = "1.3.1"
 description = "asyncio (PEP 3156) Redis support"
@@ -2304,7 +2316,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.8.x"
-content-hash = "d0f107d24897e4dd2da5c5ef0e20b6a5d9ae9980939b1233e8f49bcc4e0fb67a"
+content-hash = "1cbf54a1b69d3e85011b76f3330864448e21c7d4c58e1e395f6d82c011235ad9"
 
 [metadata.files]
 absl-py = [
@@ -2411,6 +2423,10 @@ aiohttp_cors = [
 aiohttp-middlewares = [
     {file = "aiohttp_middlewares-2.2.0-py3-none-any.whl", hash = "sha256:f4b87665667d4d3e818d70495e832e368f11a1fdc9c2fd8157a7d9e5d5147c5d"},
     {file = "aiohttp_middlewares-2.2.0.tar.gz", hash = "sha256:3967b2a0d17a2c094681e7c2f246977a365479a2820e48f8a01136c910f4aa93"},
+]
+aiohttp-prometheus-exporter = [
+    {file = "aiohttp_prometheus_exporter-0.2.4-py2.py3-none-any.whl", hash = "sha256:8e32d12182d0c7728a7a68e7eefd1b35aa10150576c968dfd28cc63cb152e36b"},
+    {file = "aiohttp_prometheus_exporter-0.2.4.tar.gz", hash = "sha256:caec41f7fee35b4779994c157f9118f69bde0886460566affc0aaf31c8a34a1b"},
 ]
 aioredis = [
     {file = "aioredis-1.3.1-py3-none-any.whl", hash = "sha256:b61808d7e97b7cd5a92ed574937a079c9387fdadd22bfbfa7ad2fd319ecc26e3"},

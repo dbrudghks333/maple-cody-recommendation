@@ -8,7 +8,7 @@ _PROXIES = {
 
 
 def get_html_text(url: str):
-    html = requests.get(url, proxies=_PROXIES).text
+    html = requests.get(url).text
     # html = requests.get(url).text
     soup = BeautifulSoup(html, "html.parser")
     return soup

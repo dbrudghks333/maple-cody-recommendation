@@ -1,0 +1,10 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: demo-backend
+  namespace: default
+spec:
+  host: demo-api-server.default.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE

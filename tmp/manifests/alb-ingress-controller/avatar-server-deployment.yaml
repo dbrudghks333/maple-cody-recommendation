@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: avatar-server
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: avatar-server
+  template:
+    metadata:
+      labels:
+        app: avatar-server
+    spec:
+      containers:
+        - name: avatar-server
+          image: 540566440182.dkr.ecr.ap-northeast-2.amazonaws.com/avatar-server:latest
+          imagePullPolicy: Always
+          args: [
+            "--wcr-server-host", "wzcomparerr2server",
+            "--wcr-server-port", "7209",
+            "--wcr-server-protocol", "http",
+            "--base-wz-code-path", "./data/base_wz.json",
+            "--wcr-caller-retry-num", "3",
+            "--wcr-caller-timeout", "1",
+            "--wcr-caller-backoff", "1"
+          ]
+          ports:
+            - containerPort: 8080

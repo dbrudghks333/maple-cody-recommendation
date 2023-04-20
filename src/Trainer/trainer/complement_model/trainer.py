@@ -16,7 +16,7 @@ import time
 
 @dataclass
 class TrainerArguments:
-    data_path: str = './data/json_data_result60.json'
+    data_path: str = './mnt/data/json_data_result.json'
     batch_size: int = 32
     num_workers: int = 8
     tensorboard_path: str = f"./runs/{time.strftime('%Y.%m.%d - %H:%M:%S')}"

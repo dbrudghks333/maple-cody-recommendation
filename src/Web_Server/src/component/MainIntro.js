@@ -61,7 +61,7 @@ export default function MainIntro() {
           paddingTop: '5vh',
 
         }}>
-          고려대학교 캡스톤 디자인 (COSE489) Team 4의 Final Project Page입니다.
+          캡스톤 디자인 (COSE489) Team 4의 Final Project Page입니다.
           <br />
           기존의 캐릭터 코디로부터 이미지 인식 기반 딥러닝 모델을 통해 코디 추천을 진행합니다.
         </div>

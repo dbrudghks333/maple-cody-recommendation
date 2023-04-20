@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-api-server
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-api-server
+  template:
+    metadata:
+      labels:
+        app: demo-api-server
+    spec:
+      containers:
+        - name: demo-api-server
+          image: 540566440182.dkr.ecr.ap-northeast-2.amazonaws.com/demo-api-server:latest
+          imagePullPolicy: Always
+          args: ["--wcr-server-host", "wzcomparerr2server", "--wcr-server-port", "7209", "--wcr-server-protocol", "http", "--base-wz-code-path", "./data/base_wz.json", "--wcr-caller-retry-num", "3", "--wcr-caller-timeout", "1", "--wcr-caller-backoff", "1", "--avatar-server-host", "avatar-server", "--avatar-server-protocol", "http", "--avatar-server-port", "8080", "--avatar-caller-retry-num", "1", "--avatar-caller-timeout", "2.5", "--avatar-caller-backoff", "1", "--inference-server-host", "localhost", "--inference-server-protocol", "localhost", "--inference-server-port", "9000", "--inference-caller-retry-num", "5", "--inference-caller-timeout", "2.5", "--inference-caller-backoff", "1"]
+          ports:
+            - containerPort: 8383

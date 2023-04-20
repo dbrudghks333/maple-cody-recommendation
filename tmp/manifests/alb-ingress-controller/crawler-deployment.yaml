@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crawler
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crawler
+  template:
+    metadata:
+      labels:
+        app: crawler
+    spec:
+      containers:
+        - name: crawler
+          image: 540566440182.dkr.ecr.ap-northeast-2.amazonaws.com/tmp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9101

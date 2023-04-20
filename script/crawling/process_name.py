@@ -85,7 +85,7 @@ def save_user_info_list(user_info_list: List[UserInfo]) -> None:
     directory = os.path.dirname(FORMAT_NAME_LIST.format(first_ranking, last_ranking))
     if not os.path.exists(directory):
         os.makedirs(directory)
-
+    print(user_info_list)
     with open(FORMAT_NAME_LIST.format(first_ranking, last_ranking), "w", newline="") as f:
         write = csv.writer(f)
         write.writerow(fields)

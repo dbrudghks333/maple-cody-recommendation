@@ -1,0 +1,53 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+  {
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Effect": "Allow",
+    "Condition": {
+      "StringEquals": {
+        ":sub": "system:serviceaccount:grafana:iamproxy-service-account"
+      }
+    },
+    "Principal": {
+      "Federated": "arn:aws:iam::540566440182:oidc-provider/"
+    }
+  },
+  {
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Effect": "Allow",
+    "Condition": {
+      "StringEquals": {
+        ":sub": "system:serviceaccount:prometheus:iamproxy-service-account"
+      }
+    },
+    "Principal": {
+      "Federated": "arn:aws:iam::540566440182:oidc-provider/"
+    }
+  },
+  {
+    "Effect": "Allow",
+    "Principal": {
+      "Federated": "arn:aws:iam::540566440182:oidc-provider/oidc.eks.ap-northeast-2.amazonaws.com/id/FED9B3733770DC9E041C1E8FB3C56806"
+    },
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      "StringEquals": {
+        "oidc.eks.ap-northeast-2.amazonaws.com/id/FED9B3733770DC9E041C1E8FB3C56806:sub": "system:serviceaccount:grafana:iamproxy-service-account"
+      }
+    }
+  },
+  {
+    "Effect": "Allow",
+    "Principal": {
+      "Federated": "arn:aws:iam::540566440182:oidc-provider/oidc.eks.ap-northeast-2.amazonaws.com/id/FED9B3733770DC9E041C1E8FB3C56806"
+    },
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      "StringEquals": {
+        "oidc.eks.ap-northeast-2.amazonaws.com/id/FED9B3733770DC9E041C1E8FB3C56806:sub": "system:serviceaccount:prometheus:iamproxy-service-account"
+      }
+    }
+  }
+]
+}

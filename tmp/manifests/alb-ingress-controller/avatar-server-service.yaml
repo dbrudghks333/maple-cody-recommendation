@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: avatar-server
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/healthcheck"
+spec:
+  selector:
+    app: avatar-server
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP

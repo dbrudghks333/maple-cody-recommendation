@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import json
 import os
 import asyncio
+from aiohttp_prometheus_exporter.handler import metrics
 
 
 def get_html_text(url: str):
@@ -136,7 +137,8 @@ class HttpHandler:
             web.post('/character_code_web_handler', self.character_code_web_handler),
             web.post('/infer_code_web_handler', self.infer_code_web_handler),
             web.post('/v1/recommend-cody', self.recommend_handler),
-            web.post('/v1/character-info', self.character_info_handler)
+            web.post('/v1/character-info', self.character_info_handler),
+            web.get('/metrics',metrics())
         ]
 
     async def index_handler(self, request: web.Request):
@@ -456,16 +458,22 @@ class HttpHandler:
         return result
 
     async def character_info_handler(self, request: web.Request):
+        self.logger.info("character_info_handler started")
+
         post = await request.json()
         user_name = post["user_name"]
         result = {}
         result["user_name"] = user_name
-
+        self.logger.info("post_process completed")
+        self.logger.info(result)
         image_url = self._get_image_url_list_from_maplegg(user_name)  # TODO: 크롤링해서 이미지 url 받아오는 코드 추가
         result["crt_image"] = self.get_as_base64(image_url)  # TODO: 크롤링해서 이미지 받아오는 코드 추가
         crypto_uri = image_url.replace(
             'https://avatar.maplestory.nexon.com/Character/', ''
         ).replace('.png', '')
+        self.logger.info("image_process completed")
+
+        self.logger.info(image_url)
 
         result["crypto_uri"] = crypto_uri
         avatar = await self.avatar_caller.request(
@@ -474,6 +482,10 @@ class HttpHandler:
         )
 
         avatar_result = await self._get_avatar_info(avatar)
+        self.logger.info("avatar_result!!")
+        self.logger.info(avatar_result)
+        
+        
 
         for category, value in avatar_result.items():
             result[category] = value

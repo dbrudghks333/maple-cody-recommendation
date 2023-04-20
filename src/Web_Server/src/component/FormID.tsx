@@ -27,7 +27,7 @@ export default function FormID({ setCharacterInfo, setRecommandInfo }) {
   ) => {
     setTextFieldUserName(event.target.value)
   };
-  const characterInfo = useFetch("http://api-server:8383/v1/character-info", userId);
+  const characterInfo = useFetch("https://8adyu0tgz8.execute-api.ap-northeast-2.amazonaws.com/v1/character-info", userId);
   const characterImageSubmit = () => {
     setUserId(textFieldUserName)
   }
