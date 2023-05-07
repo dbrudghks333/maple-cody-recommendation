@@ -102,4 +102,4 @@ pytest .
     - API 서버 개발 기여
     - Avatar Server 테스트 코드(test_http_handler.py) 작성
     - Web Server intro box 컴포넌트 구현, fetch hook 작성
-    - 쿠버네티스 클러스터 
+    - 쿠버네티스 클러스터 규츅
