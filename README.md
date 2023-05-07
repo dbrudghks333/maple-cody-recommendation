@@ -98,5 +98,8 @@ pytest .
      - Avatar Server 전반적인 부분 구현
  - 유경환:
     - Crwaling script 작성
+    - 데이터 전처리 과정 기여
+    - API 서버 개발 기여
     - Avatar Server 테스트 코드(test_http_handler.py) 작성
     - Web Server intro box 컴포넌트 구현, fetch hook 작성
+    - 쿠버네티스 클러스터 
